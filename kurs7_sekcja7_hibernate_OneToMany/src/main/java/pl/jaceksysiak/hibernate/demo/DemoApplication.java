@@ -1,5 +1,8 @@
 package pl.jaceksysiak.hibernate.demo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import pl.jaceksysiak.hibernate.demo.entity.Course;
+import pl.jaceksysiak.hibernate.demo.entity.Review;
 import pl.jaceksysiak.hibernate.demo.entity.Student;
 import pl.jaceksysiak.hibernate.demo.repository.CourseRepository;
 import pl.jaceksysiak.hibernate.demo.repository.StudentRepository;
@@ -43,7 +47,14 @@ public class DemoApplication implements CommandLineRunner {
 		
 	   //studentRepository.saveStudentWithPassport();
 		
-		courseRepository.addHardcodedReviewsForCourse();
+	  //courseRepository.addHardcodedReviewsForCourse();
+		
+		List<Review> reviews = new ArrayList<>();
+		
+		reviews.add(new Review("5", "Great Hands-on Stuff."));	
+		reviews.add(new Review("5", "Hatsoff."));
+
+		courseRepository.addReviewsForCourse(10003L, reviews );	
 		
 	}
 }
