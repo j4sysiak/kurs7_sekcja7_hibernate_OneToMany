@@ -41,7 +41,9 @@ public class DemoApplication implements CommandLineRunner {
 		
 	   //	courseRepository.playWithEntityManager();
 		
-		studentRepository.saveStudentWithPassport();
+	   //studentRepository.saveStudentWithPassport();
+		
+		courseRepository.addHardcodedReviewsForCourse();
 		
 	}
 }

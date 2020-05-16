@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import pl.jaceksysiak.hibernate.demo.entity.Course;
+import pl.jaceksysiak.hibernate.demo.entity.Review;
 
 
 @Repository
@@ -77,6 +78,46 @@ public class CourseRepository {
 
 		logger.info("playWithEntityManager - STOP");
 	}
-	
 
+	public void addHardcodedReviewsForCourse() {
+		// get course 10003
+		Course course = findById(10003L);
+		logger.info("course.getReviews() -> {}", course.getReviews());
+		
+		// add 2 reviews to it
+		Review review1 = new Review("5", "Great Hands-on Stuff.");	
+		Review review2 = new Review("5", "Hatsoff.");
+		
+		//setting the relationship
+		course.addReview(review1);
+		review1.setCourse(course);
+		
+		course.addReview(review2);
+		review2.setCourse(course);
+		
+		//save it to the database
+		em.persist(review1);
+		em.persist(review2);		
+	}
+	
+	public void addReviewsForCourse() {
+		// get course 10003
+		Course course = findById(10003L);
+		logger.info("course.getReviews() -> {}", course.getReviews());
+		
+		// add 2 reviews to it
+		Review review1 = new Review("5", "Great Hands-on Stuff.");	
+		Review review2 = new Review("5", "Hatsoff.");
+		
+		//setting the relationship
+		course.addReview(review1);
+		review1.setCourse(course);
+		
+		course.addReview(review2);
+		review2.setCourse(course);
+		
+		//save it to the database
+		em.persist(review1);
+		em.persist(review2);		
+	}
 }
