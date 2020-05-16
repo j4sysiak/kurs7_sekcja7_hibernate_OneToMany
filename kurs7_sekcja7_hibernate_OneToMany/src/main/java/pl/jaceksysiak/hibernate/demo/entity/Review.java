@@ -3,6 +3,7 @@ package pl.jaceksysiak.hibernate.demo.entity;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Review {
@@ -14,6 +15,10 @@ public class Review {
 	private String rating;
 
 	private String description;
+	
+	//Many Reviews To One Course
+	@ManyToOne
+	private Course course;
 
 	protected Review() {
 	}
@@ -21,6 +26,14 @@ public class Review {
 	public Review(String rating, String description) {
 		this.rating = rating;
 		this.description = description;
+	}
+
+	public Course getCourse() {
+		return course;
+	}
+
+	public void setCourse(Course course) {
+		this.course = course;
 	}
 
 	public String getDescription() {

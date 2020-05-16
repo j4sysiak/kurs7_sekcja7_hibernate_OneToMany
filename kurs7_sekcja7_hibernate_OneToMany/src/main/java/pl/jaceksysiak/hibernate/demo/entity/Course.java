@@ -31,7 +31,8 @@ public class Course {
 	@Column(nullable = false)
 	private String name;
 	
-	//@OneToMany(mappedBy="course")
+	//One Course has Many Reviews 
+	@OneToMany(mappedBy="course")
 	private List<Review> reviews = new ArrayList<>();
 	
 	@UpdateTimestamp
@@ -51,8 +52,12 @@ public class Course {
 		return reviews;
 	}
 
-	public void setReviews(List<Review> reviews) {
-		this.reviews = reviews;
+	public void addReview(Review review) {
+		this.reviews.add(review);
+	}
+
+	public void removeReview(Review review) {
+		this.reviews.remove(review);
 	}
 
 	public String getName() {
