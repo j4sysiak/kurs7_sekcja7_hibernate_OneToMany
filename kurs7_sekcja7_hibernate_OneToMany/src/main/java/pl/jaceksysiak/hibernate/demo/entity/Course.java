@@ -33,7 +33,7 @@ public class Course {
 	private String name;
 	
 	//One Course has Many Reviews 
-	@OneToMany(mappedBy="course", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy="course"/* by default is LAZY, fetch = FetchType.EAGER*/)
 	private List<Review> reviews = new ArrayList<>();
 	
 	@UpdateTimestamp

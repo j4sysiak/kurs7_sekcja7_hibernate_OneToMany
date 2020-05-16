@@ -3,6 +3,7 @@ package pl.jaceksysiak.hibernate.demo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
+import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 
 import org.junit.Test;
@@ -26,6 +27,9 @@ public class CourseRepositoryTest {
 	
 	@Autowired
 	CourseRepository repository;
+	
+	@Autowired
+	EntityManager em;
 
 	@Test
 	public void myFirstTest_FindById() {
@@ -73,11 +77,11 @@ public class CourseRepositoryTest {
 		logger.info("{}",course.getReviews());
 	}
 
-//	@Test
-//	@Transactional
-//	public void retrieveCourseForReview() {
-//		Review review = em.find(Review.class, 50001L);
-//		logger.info("{}",review.getCourse());
-//	}
+	@Test
+	@Transactional
+	public void retrieveCourseForReview() {
+		Review review = em.find(Review.class, 50001L);
+		logger.info("{}",review.getCourse());
+	}
 	
 }

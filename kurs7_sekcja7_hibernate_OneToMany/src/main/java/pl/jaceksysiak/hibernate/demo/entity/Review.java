@@ -1,6 +1,7 @@
 package pl.jaceksysiak.hibernate.demo.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -17,7 +18,7 @@ public class Review {
 	private String description;
 	
 	//Many Reviews To One Course
-	@ManyToOne
+	@ManyToOne(/*By default is EAGER*/fetch = FetchType.LAZY)
 	private Course course;
 
 	protected Review() {
